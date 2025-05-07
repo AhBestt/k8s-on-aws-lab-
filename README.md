@@ -84,4 +84,16 @@ If you are using Ubuntu 24.04 you must disable the AppArmor service on your inst
 
 10.Join worker node to cluster
     On control plane
-    'kubeadm token create --print-join-command'
+    
+    'kubeadm token create --print-join-command' copy all of the output 
+
+    'sudo <output>'
+11. Configure Firewall Rules
+    follow document https://docs.cilium.io/en/stable/operations/system_requirements/#admin-system-reqs
+    - check connection
+
+      'cilium connectivity test'
+
+      test can take up to 15 minutes or more to finish
+      
+    
