@@ -60,7 +60,11 @@ If you are using Ubuntu 24.04 you must disable the AppArmor service on your inst
 'sudo systemctl disable apparmor.service'
 
   -  Enable IPv4 packet forwarding 
-
+  -  create and run script "install-containerd.sh"
+6. Install kubeadm, kubelet, kubectl
+  -  follow document https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+  -  create and run script "install-k8s-component.sh"
+  -  
 
 
 
