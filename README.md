@@ -76,5 +76,12 @@ If you are using Ubuntu 24.04 you must disable the AppArmor service on your inst
 
    Referencing Kubeconfig File
    -  File located in "$HOME/.kube/config" folder
-   -  
+   -  create and run "ref-k8s-config.sh"
 
+9. Config Network Plugin - Cilium
+    - follow the document quick install  https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/
+    -  'cilium install --set ipam.operator.clusterPoolIPv4PodCIDRList="10.0.0.0/9"'
+
+10.Join worker node to cluster
+    On control plane
+    'kubeadm token create --print-join-command'
