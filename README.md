@@ -62,7 +62,5 @@ If you are using Ubuntu 24.04 you must disable the AppArmor service on your inst
   -  Enable IPv4 packet forwarding 
 
 
-# Apply sysctl params without reboot
-sudo sysctl --system'''
 
 
