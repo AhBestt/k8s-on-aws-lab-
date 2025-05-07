@@ -63,8 +63,18 @@ If you are using Ubuntu 24.04 you must disable the AppArmor service on your inst
   -  create and run script "install-containerd.sh"
 6. Install kubeadm, kubelet, kubectl
   -  follow document https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
-  -  create and run script "install-k8s-component.sh"
-  -  
+  -  create and run script "install-k8s-component.sh" on all node
+7. Initial cluster with kubeadm
+  On Controlplane
+  
+  'sudo kubeadm init'
 
+8. Connect to cluster (kubeconfig&kubectl)
+   Kubeconfig Contents
 
+   'sudo vim /etc/kubernetes/admin.conf'
+
+   Referencing Kubeconfig File
+   -  File located in "$HOME/.kube/config" folder
+   -  
 
