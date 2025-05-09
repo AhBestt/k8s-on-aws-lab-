@@ -34,3 +34,13 @@ kubectl apply -f nginx-service.yaml
 
 # Check the status
 kubectl get svc
+
+# Check pod service connection
+kubectl describe svc nginx-service
+kubectl get ep
+
+# you can test connection inside cluster by
+kubectl get pod
+kubectl exec -it <podname-nginx-deployment-xxxxx> -- /bin/sh
+  curl http://nginx-service:8080
+
