@@ -6,7 +6,12 @@ In this lab, we expose an existing NGINX Pod using a Kubernetes `Service` of typ
 This type of service allows internal communication within the cluster (e.g. between pods or other services).
 
 ---
+## Files
 
+- `nginx-service.yaml` 
+
+
+---
 ## Service YAML
 
 
