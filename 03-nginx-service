@@ -1,0 +1,21 @@
+# Lab 3: Expose NGINX Deployment with Service
+
+## 🎯 Objective
+
+In this lab, we expose the existing NGINX Deployment (from Lab 2) using a Kubernetes `Service`.  
+This allows users to access the application through a NodePort from outside the cluster.
+
+---
+
+## 🧱 Components
+
+- `deployment.yaml` — Same as Lab 2 (NGINX Deployment)
+- `service.yaml` — A `NodePort` Service to expose the Deployment
+
+---
+
+## 📦 Apply to Cluster
+
+```bash
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
