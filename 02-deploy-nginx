@@ -22,4 +22,4 @@ kubectl apply -f deployment.yaml
 
 # Check the status
 kubectl get pods
-kubectl get svc
+kubectl get deploy
