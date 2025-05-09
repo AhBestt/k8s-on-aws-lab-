@@ -9,7 +9,7 @@ This lab builds on Lab 1 and introduces the use of Deployment and Service resour
 
 ## Files
 
-- `nginx-deployment.yaml` – Defines the NGINX Deployment with 1 replica
+- `nginx-deployment.yaml` – Defines the NGINX Deployment with 2 replica
 
 
 ---
@@ -19,9 +19,6 @@ This lab builds on Lab 1 and introduces the use of Deployment and Service resour
 ```bash
 # Apply the Deployment
 kubectl apply -f deployment.yaml
-
-# Optional: Apply Service
-kubectl apply -f service.yaml
 
 # Check the status
 kubectl get pods
