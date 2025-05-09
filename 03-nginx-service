@@ -1,21 +1,24 @@
-# Lab 3: Expose NGINX Deployment with Service
+# Lab 3: Expose NGINX Pod with ClusterIP Service
 
-## 🎯 Objective
+## Objective
 
-In this lab, we expose the existing NGINX Deployment (from Lab 2) using a Kubernetes `Service`.  
-This allows users to access the application through a NodePort from outside the cluster.
-
----
-
-## 🧱 Components
-
-- `deployment.yaml` — Same as Lab 2 (NGINX Deployment)
-- `service.yaml` — A `NodePort` Service to expose the Deployment
+In this lab, we expose an existing NGINX Pod using a Kubernetes `Service` of type `ClusterIP`.  
+This type of service allows internal communication within the cluster (e.g. between pods or other services).
 
 ---
 
-## 📦 Apply to Cluster
+## Service YAML
 
-```bash
-kubectl apply -f deployment.yaml
-kubectl apply -f service.yaml
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80
