@@ -1,0 +1,34 @@
+# Lab 4: Working with Labels in Kubernetes
+
+## Objective
+
+This lab demonstrates how to use **labels** in Kubernetes to organize and manage services, pods, and deployments.  
+You'll learn how to assign labels, query resources by label, and use them to group and interact with multiple resources efficiently.
+
+---
+
+## Files
+
+- `nginx-service.yaml` — Defines a Service with labels and selectors
+
+---
+
+## Step-by-step Instructions
+1. vi nginx-service.yaml
+
+2. add labels inside metadata
+metadata:
+  name: nginx-service
+  labels:
+    app: nginx
+    svc: test-nginx
+
+### Apply the Service with Labels
+
+```bash
+kubectl apply -f nginx-service.yaml
+
+### Checking service and lables
+kubectl describe svc nginx-service
+kubectl get svc --show-labels
+kubectl get deployment --show-labels
