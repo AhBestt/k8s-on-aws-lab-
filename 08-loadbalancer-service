@@ -40,3 +40,36 @@ Edit nginx-service-2.yaml:
   type: LoadBalancer
 
 or Create nginx-service-3.yaml:
+
+3. Check service
+The EXTERNAL-IP shows <pending> on self-managed clusters
+This is expected — because Kubernetes itself does not create a real LoadBalancer
+
+
+How to Simulate LoadBalancer on AWS
+
+1. Go to EC2 → Load Balancers → Create Load Balancer
+	•	Choose Application Load Balancer
+	•	Select 2 or more subnets in your region
+	•	Use the default security group or create new one
+
+2. Configure Listener and Target Group
+	•	Create a target group of type “Instance”
+	•	Add worker nodes as targets
+
+3. Create Load Balancer
+	•	Choose the target group you created
+	•	Save and create the load balancer
+
+⸻
+
+4. Update Security Group
+
+Allow inbound traffic on port 80 (or whatever you’re exposing)
+
+⸻
+
+5. Access Application
+
+Copy the DNS name of the Load Balancer and paste in browser:
+http://<loadbalancer-dns-name>
