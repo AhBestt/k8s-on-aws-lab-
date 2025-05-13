@@ -23,3 +23,9 @@ In this lab, you will expose a Deployment using a `NodePort` type Service, which
 kubectl delete svc nginx-service
 kubectl get svc
 
+2. Edit or Create nginx-service-2.yaml
+
+Noted: nodePort must be in the range 30000–32767, You can omit it and let Kubernetes auto-assign one
+
+3. Apply the Service
+kubectl apply -f nginx-service-2.yaml
