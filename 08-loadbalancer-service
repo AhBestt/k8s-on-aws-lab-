@@ -1,0 +1,42 @@
+# Lab 8: Exposing Services with LoadBalancer
+
+## Objective
+
+In this lab, we expose a Kubernetes service using the **LoadBalancer** type to simulate real-world cloud-native access patterns.  
+We’ll compare this with NodePort and explain how managed Kubernetes handles LoadBalancers differently from self-managed clusters.
+
+---
+
+## Why Not NodePort?
+
+| Issue with NodePort | Problem |
+|---------------------|---------|
+| Access via raw IP + high port | Not user-friendly |
+| Need to manage external DNS manually | Hard to automate |
+| One IP per node | No automatic load balancing |
+
+---
+
+## Why LoadBalancer?
+
+- Gives a dedicated external IP/DNS
+- Automatically routes traffic to healthy worker nodes
+- Cleaner and more secure
+- Used in production on EKS, AKS, GKE
+
+---
+
+## Steps
+
+---
+
+1. Clean up existing NodePort service
+
+```bash
+kubectl delete svc nginx-service
+
+2. Modify Service YAML
+Edit nginx-service-2.yaml:
+  type: LoadBalancer
+
+or Create nginx-service-3.yaml:
