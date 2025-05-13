@@ -1,1 +1,40 @@
+# Lab 5: Scaling Deployments & Recording Rollouts
 
+## Objective
+
+This lab demonstrates how to:
+- Scale a Kubernetes Deployment up or down
+- Record changes using the `--record` flag
+- View rollout history of a deployment
+
+---
+
+## Prerequisites
+
+Make sure you already have an existing deployment, e.g. `nginx-deployment`.  
+You can create it from this file:
+
+```bash
+kubectl apply -f nginx-deployment.yaml
+
+
+## Step-by-step Commands
+
+1. View Deployment
+kubectl get deployment
+kubectl get pod
+
+2. Scale the Deployment (Increase)
+kubectl scale deployment nginx-deployment --replicas=4
+kubectl get pod
+
+3. Scale the Deployment (Decrease)
+kubectl scale deployment nginx-deployment --replicas=3
+kubectl get pod
+
+4. Record Scaling History
+kubectl scale deployment nginx-deployment --replicas=5 --record
+kubectl scale deployment nginx-deployment --replicas=3 --record
+
+5. View Rollout History
+kubectl rollout history deployment nginx-deployment
