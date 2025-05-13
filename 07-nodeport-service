@@ -1,0 +1,25 @@
+# Lab 7: Exposing Services with NodePort
+
+## Objective
+
+In this lab, you will expose a Deployment using a `NodePort` type Service, which allows external access to your app via `<NodeIP>:<NodePort>`.
+
+---
+
+## Concepts
+
+| Service Type | Description |
+|--------------|-------------|
+| `ClusterIP` (default) | Internal-only, accessible only from inside the cluster |
+| `NodePort`           | Exposes service on a static port on **all worker nodes** for external access |
+
+---
+
+## Setup Steps
+
+1.Clean up any previous services
+
+```bash
+kubectl delete svc nginx-service
+kubectl get svc
+
