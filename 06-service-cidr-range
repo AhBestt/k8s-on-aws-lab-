@@ -1,0 +1,68 @@
+# Lab 6: Configure and Verify Service Cluster IP Range (CIDR)
+
+## Objective
+
+Understand how to configure the **Service IP Range (CIDR)** used for assigning internal ClusterIP addresses to services in Kubernetes.
+
+---
+
+## What You’ll Learn
+
+- Where Service IP range is defined
+- How to change the Service CIDR via kube-apiserver config
+- How it affects **new** services (but not existing ones)
+- How to test it with `kubectl create service`
+
+---
+
+## Prerequisites
+
+This lab assumes you’re running a **self-managed cluster** (e.g., via `kubeadm`) with access to:
+
+```bash
+/etc/kubernetes/manifests/kube-apiserver.yaml
+
+## Step-by-step
+
+1. View Existing Service IP Range
+kubectl get svc
+
+2. Locate kube-apiserver configuration
+ls /etc/kubernetes/manifests
+sudo vim /etc/kubernetes/manifests/kube-apiserver.yaml
+
+Find the flag:
+--service-cluster-ip-range=10.96.0.0/12
+
+3. Change the CIDR
+Update to a new range, e.g.:
+--service-cluster-ip-range=20.96.0.0/12
+
+Note: Save and exit. Kubelet auto-restarts the API server when manifest changes.
+
+4. Confirm restart (may take 10–30s)
+kubectl get pod -n kube-system
+
+You might see:
+The connection to the server ... was refused
+
+
+This is normal during API server restart. Wait a few seconds and try again.
+
+5. Verify that the existing services keep their old IPs
+kubectl get svc
+
+You’ll see they still use the original 10.x.x.x range because new CIDR block only applies for newly created Services
+
+6. Create a new service using the new range
+kubectl create service clusterip test-new-cidr --tcp=80:80
+kubectl get svc test-new-cidr
+
+The new service should have IP in the 20.x.x.x range
+
+ Notes
+	•	The --service-cluster-ip-range flag is set at cluster initialization
+	•	Changing it does not affect existing services
+	•	Only new services will use the updated CIDR
+	•	You can confirm default CIDR in kubeadm:
+    kubeadm config print init-defaults | grep serviceSubnet
