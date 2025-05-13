@@ -29,3 +29,9 @@ Noted: nodePort must be in the range 30000–32767, You can omit it and let Kube
 
 3. Apply the Service
 kubectl apply -f nginx-service-2.yaml
+kubectl get svc
+
+4. Access the App from Browser
+Get Public IP of any Worker Node (EC2 Public IP) 
+Visit in browser:
+http://<NodeIP>:<NodePort>
